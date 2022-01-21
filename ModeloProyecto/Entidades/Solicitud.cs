@@ -11,7 +11,7 @@ namespace ModeloProyecto.Entidades
         public MicroEmprendimiento MicroEmprendimientoSoli { get; set; }
         public int MicroEmprendimientoId { get; set; }
 
-        public Prestamo PrestamoSoli;
+        public Prestamo PrestamoSoli { get; set; }
         public int PrestamoId { get; set; }
     }
 }
