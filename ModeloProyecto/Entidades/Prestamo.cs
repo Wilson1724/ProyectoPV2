@@ -16,7 +16,7 @@ namespace ModeloProyecto.Entidades
         public int TotalDeuda { get; set; }
         public int BancoId { get; set; }
         public Banco BancoPres { get; set; }
-        public int MicroId { get; set; }
+        public int MicroempresarioId { get; set; }
         public Microempresario MicroempresarioPres { get; set; }
     }
 }

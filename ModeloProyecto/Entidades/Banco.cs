@@ -12,5 +12,6 @@ namespace ModeloProyecto.Entidades
         public string Sucursal { get; set; }
         public string Encargado { get; set; }
         public List<Prestamo> Prestamos { get; set; }
+        public List<Microempresario> Microempresarios { get; set; }
     }
 }

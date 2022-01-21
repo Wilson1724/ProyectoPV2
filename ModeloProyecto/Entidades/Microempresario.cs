@@ -8,7 +8,7 @@ namespace ModeloProyecto.Entidades
 {
     public class Microempresario
     {
-        public int MicroId { get; set; }
+        public int MicroempresarioId { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
 
@@ -18,9 +18,10 @@ namespace ModeloProyecto.Entidades
         public int IngresosAnuales { get; set; }
         public int BancoId { get; set; }
         public Banco BancoM { get; set; }
-        public int EmproId { get; set; }
+        
         public MicroEmprendimiento MicroemprendimientoM { get; set; }
-        public int  PrestamOId { get; set; }
+        public int MicroEmprendimientoId { get; set; }
+
         public Prestamo PrestamoM { get; set; }
     }
 }

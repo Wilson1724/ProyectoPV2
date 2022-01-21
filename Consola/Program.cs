@@ -22,7 +22,7 @@ namespace Consola
                 EdadG = 24,
                 DireccionG = "San Sebastian",
                 IngresosAnualesG = 3000,
-                MicroempresarioG = new Microempresario()
+                
             };
             Microempresario Ramiro = new Microempresario()
             {
