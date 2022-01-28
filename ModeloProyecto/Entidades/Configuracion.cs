@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ModeloProyecto.Entidades
 {
-    public class Recurso
+    public class Configuracion
     {
-        public int MontoMinimo { get; set; }
         public int MontoMaximo { get; set; }
+        public string BancoNombre { get; set; }
         public Prestamo PrestamoActual { get; set; }
-        public int PrestamoActualId {get;set;}
+        public int PrestamoActualId { get; set; }
 
 
     }

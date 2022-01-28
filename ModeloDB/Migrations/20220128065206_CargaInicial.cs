@@ -100,11 +100,12 @@ namespace ModeloDB.Migrations
                 {
                     PrestamoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Cantidad = table.Column<int>(type: "int", nullable: false),
+                    Cantidad = table.Column<double>(type: "float", nullable: false),
                     Plazo = table.Column<int>(type: "int", nullable: false),
                     Interes = table.Column<int>(type: "int", nullable: false),
-                    CuotaMensual = table.Column<int>(type: "int", nullable: false),
-                    TotalDeuda = table.Column<int>(type: "int", nullable: false),
+                    CuotaMensual = table.Column<double>(type: "float", nullable: false),
+                    TotalDeuda = table.Column<double>(type: "float", nullable: false),
+                    Estado = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BancoId = table.Column<int>(type: "int", nullable: false),
                     MicroempresarioId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -125,40 +126,27 @@ namespace ModeloDB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Solicitudes",
+                name: "Configuraciones",
                 columns: table => new
                 {
-                    MicroEmprendimientoId = table.Column<int>(type: "int", nullable: false),
-                    PrestamoId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Solicitudes", x => new { x.MicroEmprendimientoId, x.PrestamoId });
-                    table.ForeignKey(
-                        name: "FK_Solicitudes_Microemprendimientos_MicroEmprendimientoId",
-                        column: x => x.MicroEmprendimientoId,
-                        principalTable: "Microemprendimientos",
-                        principalColumn: "MicroEmprendimientoId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Recursos",
-                columns: table => new
-                {
-                    MontoMinimo = table.Column<int>(type: "int", nullable: false),
                     MontoMaximo = table.Column<int>(type: "int", nullable: false),
+                    BancoNombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PrestamoActualId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.ForeignKey(
-                        name: "FK_Recursos_Prestamos_PrestamoActualId",
+                        name: "FK_Configuraciones_Prestamos_PrestamoActualId",
                         column: x => x.PrestamoActualId,
                         principalTable: "Prestamos",
                         principalColumn: "PrestamoId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Configuraciones_PrestamoActualId",
+                table: "Configuraciones",
+                column: "PrestamoActualId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Microempresarios_BancoId",
@@ -175,26 +163,18 @@ namespace ModeloDB.Migrations
                 table: "Prestamos",
                 column: "MicroempresarioId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Recursos_PrestamoActualId",
-                table: "Recursos",
-                column: "PrestamoActualId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Recursos");
-
-            migrationBuilder.DropTable(
-                name: "Solicitudes");
-
-            migrationBuilder.DropTable(
-                name: "Prestamos");
+                name: "Configuraciones");
 
             migrationBuilder.DropTable(
                 name: "Microemprendimientos");
+
+            migrationBuilder.DropTable(
+                name: "Prestamos");
 
             migrationBuilder.DropTable(
                 name: "Garantes");

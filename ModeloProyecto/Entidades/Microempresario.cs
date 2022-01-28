@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloProyecto.Entidades
 {
-    public class Microempresario
+    public class Microempresario : IEntidad
     {
         public int MicroempresarioId { get; set; }
         public string Nombre { get; set; }

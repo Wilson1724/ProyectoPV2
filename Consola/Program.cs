@@ -1,63 +1,35 @@
-﻿using ModeloProyecto.Entidades;
-using System;
+﻿using CargaDatos;
+using ModeloDB;
+using ModeloProyecto.Entidades;
 using System.Collections.Generic;
+using static CargaDatos.DatosIniciales;
 
 namespace Consola
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            Banco Quito = new Banco()
-            {
-                Sucursal = "Quito Norte",
-                Encargado = "Diego Martinez",
-                Prestamos = new List<Prestamo> () { new Prestamo() { } }
-            };
-            Garante Juan = new Garante()
-            {
-                NombreG = "Dario",
-                ApellidoG = "Rodriguez",
-                CedulaG = 1738723161,
-                EdadG = 24,
-                DireccionG = "San Sebastian",
-                IngresosAnualesG = 3000,
-                
-            };
-            Microempresario Ramiro = new Microempresario()
-            {
-                Nombre = "Ramiro",
-                Apellido = "Perez",
-                Cedula = 1748722162,
-                Edad = 27,
-                Direccion = "San Marcos",
-                IngresosAnuales = 2000,
-                BancoM = new Banco(),
-                MicroemprendimientoM = new MicroEmprendimiento(),
-                PrestamoM = new Prestamo()
-            };
-            MicroEmprendimiento LocalRopa = new MicroEmprendimiento()
-            {
-                NombreE = "Ropa Rodriguez",
-                Tipo = "Comercial",
-                Descripcion = "Local Comercial de camisetas, pantalones y chompas para hombre y mujer",
-                Ciudad = "Quito",
-                CreditoNecesario = 2000,
-                Ganancias = 5000,
-                MicroempresarioEmpr = new Microempresario()
+            DatosIniciales datos = new DatosIniciales();
+            var listas = datos.Carga();
 
-            };
-            Prestamo Tipo1 = new Prestamo()
-            {
-                Cantidad= 1296 ,
-                Plazo = 12,
-                Interes = 5,
-                CuotaMensual = 162,
-                TotalDeuda = 1944,
-                BancoPres = new Banco(),
-                MicroempresarioPres = new Microempresario ()
+            // Extraer el diccionario de las listas
 
-            };
+            var listaPrestamos = (List<Prestamo>)listas[ListasTipo.Prestamos];
+            var listaBancos = (List<Banco>)listas[ListasTipo.Bancos];
+            var listaGarantes = (List<Garante>)listas[ListasTipo.Garantes];
+            var listaMicoEmpresarios = (List<Microempresario>)listas[ListasTipo.MicroEmpresarios];
+            var listaMicroEmprendimientos = (List<MicroEmprendimiento>)listas[ListasTipo.MicroEmprendimientos];
+            
+            //Grabar
+            PrestamoDB db = new PrestamoDB();
+            db.Prestamos.AddRange(listaPrestamos);
+            db.Bancos.AddRange(listaBancos);
+            db.Garantes.AddRange(listaGarantes);
+            db.Microempresarios.AddRange(listaMicoEmpresarios);
+            db.Microemprendimientos.AddRange(listaMicroEmprendimientos);
+            db.SaveChanges();
+
         }
     }
 }

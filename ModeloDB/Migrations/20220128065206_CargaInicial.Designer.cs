@@ -9,7 +9,7 @@ using ModeloDB;
 namespace ModeloDB.Migrations
 {
     [DbContext(typeof(PrestamoDB))]
-    [Migration("20220121130310_CargaInicial")]
+    [Migration("20220128065206_CargaInicial")]
     partial class CargaInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,22 @@ namespace ModeloDB.Migrations
                     b.HasKey("BancoId");
 
                     b.ToTable("Bancos");
+                });
+
+            modelBuilder.Entity("ModeloProyecto.Entidades.Configuracion", b =>
+                {
+                    b.Property<string>("BancoNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MontoMaximo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PrestamoActualId")
+                        .HasColumnType("int");
+
+                    b.HasIndex("PrestamoActualId");
+
+                    b.ToTable("Configuraciones");
                 });
 
             modelBuilder.Entity("ModeloProyecto.Entidades.Garante", b =>
@@ -147,11 +163,14 @@ namespace ModeloDB.Migrations
                     b.Property<int>("BancoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
+                    b.Property<double>("Cantidad")
+                        .HasColumnType("float");
 
-                    b.Property<int>("CuotaMensual")
-                        .HasColumnType("int");
+                    b.Property<double>("CuotaMensual")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Estado")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Interes")
                         .HasColumnType("int");
@@ -162,8 +181,8 @@ namespace ModeloDB.Migrations
                     b.Property<int>("Plazo")
                         .HasColumnType("int");
 
-                    b.Property<int>("TotalDeuda")
-                        .HasColumnType("int");
+                    b.Property<double>("TotalDeuda")
+                        .HasColumnType("float");
 
                     b.HasKey("PrestamoId");
 
@@ -175,33 +194,15 @@ namespace ModeloDB.Migrations
                     b.ToTable("Prestamos");
                 });
 
-            modelBuilder.Entity("ModeloProyecto.Entidades.Recurso", b =>
+            modelBuilder.Entity("ModeloProyecto.Entidades.Configuracion", b =>
                 {
-                    b.Property<int>("MontoMaximo")
-                        .HasColumnType("int");
+                    b.HasOne("ModeloProyecto.Entidades.Prestamo", "PrestamoActual")
+                        .WithMany()
+                        .HasForeignKey("PrestamoActualId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<int>("MontoMinimo")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PrestamoActualId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("PrestamoActualId");
-
-                    b.ToTable("Recursos");
-                });
-
-            modelBuilder.Entity("ModeloProyecto.Entidades.Solicitud", b =>
-                {
-                    b.Property<int>("MicroEmprendimientoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PrestamoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MicroEmprendimientoId", "PrestamoId");
-
-                    b.ToTable("Solicitudes");
+                    b.Navigation("PrestamoActual");
                 });
 
             modelBuilder.Entity("ModeloProyecto.Entidades.MicroEmprendimiento", b =>
@@ -251,28 +252,6 @@ namespace ModeloDB.Migrations
                     b.Navigation("BancoPres");
 
                     b.Navigation("MicroempresarioPres");
-                });
-
-            modelBuilder.Entity("ModeloProyecto.Entidades.Recurso", b =>
-                {
-                    b.HasOne("ModeloProyecto.Entidades.Prestamo", "PrestamoActual")
-                        .WithMany()
-                        .HasForeignKey("PrestamoActualId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PrestamoActual");
-                });
-
-            modelBuilder.Entity("ModeloProyecto.Entidades.Solicitud", b =>
-                {
-                    b.HasOne("ModeloProyecto.Entidades.MicroEmprendimiento", "MicroEmprendimientoSoli")
-                        .WithMany()
-                        .HasForeignKey("MicroEmprendimientoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MicroEmprendimientoSoli");
                 });
 
             modelBuilder.Entity("ModeloProyecto.Entidades.Banco", b =>

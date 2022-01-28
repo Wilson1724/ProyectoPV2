@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloProyecto.Entidades
 {
-    public class Banco
+    public class Banco : IEntidad
     {
         public int BancoId { get; set; }
         public string Sucursal { get; set; }

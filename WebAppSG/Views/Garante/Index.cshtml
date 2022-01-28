@@ -1,0 +1,61 @@
+﻿
+@model IEnumerable<Garante>
+
+    @{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h1>Index</h1>
+    <p>A continuación se presenta la lista de garantes del  Sistema de Prestamos a Microempresarios</p>
+
+    <div class=" = " container">
+        <div class="row"
+         <div class="col-sm-6">
+             <h3>Garantes</h3>
+         </div>
+        <div class="col-sm-6">
+            <a class="btn btn-success d-block">
+                Crear nuevo garante
+            </a>
+        </div>
+    </div>
+
+        <div class="row">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td>Id </td>
+                        <td>Nombre</td>
+                        <td>Apellido</td>
+                        <td>Cedula</td>
+                        <td>Edad</td>
+                        <td>Dirección</td>
+                        <td>IngresosAnuales</td>
+                        <td>Acciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(Garante garante in Model)
+                    {
+                    <tr>
+                        <td>@garante.GaranteId </td>
+                        <td>@garante.NombreG</td>
+                        <td>@garante.ApellidoG</td>
+                        <td>@garante.CedulaG</td>
+                        <td>@garante.EdadG</td>
+                        <td>@garante.DirecciónG</td>
+                        <td>@garante.IngresosAnualesG</td>
+                        <td>
+                            Editar, Borrar
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+
+        </div>
+    </div>

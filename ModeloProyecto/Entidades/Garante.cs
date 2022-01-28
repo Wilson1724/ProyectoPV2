@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloProyecto.Entidades
 {
-    public class Garante
+    public class Garante : IEntidad
     {
         public int GaranteId { get; set; }
         public string NombreG { get; set; }

@@ -4,6 +4,17 @@ namespace ModeloDB
 {
     public class PrestamoDB : DbContext
     {
+        public PrestamoDB()
+        {
+        }
+
+
+
+        //Constructor invoca al constructor de padre
+        public PrestamoDB( DbContextOptions<PrestamoDB>options )
+                :base (options)
+            {
+            }
         //Declaración de las entidades del modelo
         public DbSet<Prestamo> Prestamos { get; set; }
         public DbSet<Banco> Bancos { get; set; }
@@ -11,13 +22,16 @@ namespace ModeloDB
         public DbSet<MicroEmprendimiento> Microemprendimientos { get; set; }
         public DbSet<Garante> Garantes { get; set; }
 
-        public DbSet<Solicitud> Solicitudes { get; set; }
-        public DbSet<Recurso> Recursos { get; set; }
+        public DbSet<Configuracion> Configuraciones { get; set; }
         //Configuración de la conección
+        
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlServer("Server=WILSON\\SQLEXPRESS; Initial Catalog=Proyecto1 ;trusted_connection=true;");
+
         }
+        */
         //Configurar el modelo de objetos
         protected override void OnModelCreating(ModelBuilder model)
         {
@@ -45,32 +59,27 @@ namespace ModeloDB
             model.Entity<MicroEmprendimiento>()
                 .HasOne(emprendimiento => emprendimiento.MicroempresarioEmpr)
                 .WithOne(microempresario=> microempresario.MicroemprendimientoM)
+                .OnDelete(DeleteBehavior.NoAction)  // Modelar el comportamiento por defecto de delete
                 .HasForeignKey<MicroEmprendimiento>(emprendimiento => emprendimiento.MicroEmprendimientoId);
 
             //Cardinalidad de Garante y Microemprendimiento 1-1
             model.Entity<MicroEmprendimiento>()
                 .HasOne(emprendimiento => emprendimiento.GaranteEmpr)
                 .WithOne(garante => garante.MicroEmprendimientoG)
+                .OnDelete(DeleteBehavior.NoAction)  // Modelar el comportamiento por defecto de delete
                 .HasForeignKey<MicroEmprendimiento>(emprendimiento => emprendimiento.MicroEmprendimientoId);
 
-            //Clave Primaria formada por dos claves foranes
-            model.Entity<Solicitud>()
-                .HasKey(solicitud => new
-                {
-                    solicitud.MicroEmprendimientoId,
-                    solicitud.PrestamoId
-                })
-                ;
+       
                 
 
             //Recurso
             //- Notiene clvae primaria
-            model.Entity<Recurso>()
+            model.Entity<Configuracion>()
                 .HasNoKey();
-            model.Entity<Recurso>()
-                .HasOne(recurso => recurso.PrestamoActual)
+            model.Entity<Configuracion>()
+                .HasOne(config => config.PrestamoActual)
                 .WithMany()
-                .HasForeignKey(recurso => recurso.PrestamoActualId);
+                .HasForeignKey(config => config.PrestamoActualId);
 
         }
 

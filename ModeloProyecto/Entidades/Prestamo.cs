@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace ModeloProyecto.Entidades
 {
-    public class Prestamo
+    public class Prestamo 
     {
         public int PrestamoId { get; set; }
-        public int Cantidad { get; set; }
+        public double Cantidad { get; set; }
         public int Plazo { get; set; }
         public int Interes { get; set; }
-        public int CuotaMensual { get; set; }
-        public int TotalDeuda { get; set; }
+        public double CuotaMensual { get; set; }
+        public double TotalDeuda { get; set; }
+        public string Estado { get; set; }
         public int BancoId { get; set; }
         public Banco BancoPres { get; set; }
         public int MicroempresarioId { get; set; }
