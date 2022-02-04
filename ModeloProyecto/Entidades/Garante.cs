@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModeloProyecto.Entidades
 {
+
+
     public class Garante : IEntidad
     {
         public int GaranteId { get; set; }
@@ -16,8 +18,8 @@ namespace ModeloProyecto.Entidades
         public int EdadG { get; set; }
         public string DireccionG { get; set; }
         public int IngresosAnualesG { get; set; }
-        
-        
+
+
         public MicroEmprendimiento MicroEmprendimientoG { get; set; }
         public int MicroEmprendimientoId{ get; set; }
     }

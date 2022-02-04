@@ -1,0 +1,57 @@
+﻿@using ModeloProyecto.Entidades
+@model Garante
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edición de Garante </h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Actualizar el garante: @Model.NombreG </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10">
+           
+            <form method="post" asp-action="Edit">
+
+                <input asp-for="GaranteId" hidden />
+
+                <div class="form-group">
+                    <label>Nombre: </label>
+                    <input asp-for="NombreG" />
+                </div>
+                <div class="form-group">
+                    <label>Apellido: </label>
+                    <input asp-for="ApellidoG" />
+                </div>
+                <div class="form-group">
+                    <label>Cedula: </label>
+                    <input asp-for="CedulaG" />
+                </div>
+                <div class="form-group">
+                    <label>Edad: </label>
+                    <input asp-for="EdadG" />
+                </div>
+                <div class="form-group">
+                    <label>Dirección: </label>
+                    <input asp-for="DireccionG" />
+                </div>
+                <div class="form-group">
+                    <label>Ingresos Anuales: </label>
+                    <input asp-for="IngresosAnualesG" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Actualizar garante" class="btn btn-primary" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+

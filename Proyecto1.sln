@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModeloProyecto", "ModeloPro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CargaDatos", "CargaDatos\CargaDatos.csproj", "{413E13F0-D150-496F-86F9-ED4DE3DD6706}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppSG", "WebAppSG\WebAppSG.csproj", "{F1A18B61-8B9E-48E2-94DE-A1C2C7D61A98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppSGA", "WebAppSGA\WebAppSGA.csproj", "{21DE943E-6DAA-4CBF-9BE5-392024AC4E49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{413E13F0-D150-496F-86F9-ED4DE3DD6706}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{413E13F0-D150-496F-86F9-ED4DE3DD6706}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{413E13F0-D150-496F-86F9-ED4DE3DD6706}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1A18B61-8B9E-48E2-94DE-A1C2C7D61A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1A18B61-8B9E-48E2-94DE-A1C2C7D61A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1A18B61-8B9E-48E2-94DE-A1C2C7D61A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1A18B61-8B9E-48E2-94DE-A1C2C7D61A98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21DE943E-6DAA-4CBF-9BE5-392024AC4E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21DE943E-6DAA-4CBF-9BE5-392024AC4E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21DE943E-6DAA-4CBF-9BE5-392024AC4E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21DE943E-6DAA-4CBF-9BE5-392024AC4E49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

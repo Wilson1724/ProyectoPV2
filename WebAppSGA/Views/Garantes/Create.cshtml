@@ -1,0 +1,56 @@
+﻿@using ModeloProyecto.Entidades
+@model Garante
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Creación del garante </h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Nuevo Garante</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10">
+           
+            <form method="post" asp-action="Create">
+            
+                <div class="form-group">
+                    <label>Nombre: </label>
+                    <input asp-for="NombreG" />
+                </div>
+                <div class="form-group">
+                    <label>Apellido: </label>
+                    <input asp-for="ApellidoG" />
+                </div>
+                <div class="form-group">
+                    <label>Cedula: </label>
+                    <input asp-for="CedulaG" />
+                </div>
+                <div class="form-group">
+                    <label>Edad: </label>
+                    <input asp-for="EdadG" />
+                </div>
+                <div class="form-group">
+                    <label>Dirección: </label>
+                    <input asp-for="DireccionG" />
+                </div>
+                <div class="form-group">
+                    <label>Ingresos Anuales: </label>
+                    <input asp-for="IngresosAnualesG" />
+                </div>
+               
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Crear garante" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+

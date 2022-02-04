@@ -11,10 +11,17 @@ namespace ModeloDB
 
 
         //Constructor invoca al constructor de padre
-        public PrestamoDB( DbContextOptions<PrestamoDB>options )
-                :base (options)
-            {
-            }
+        public PrestamoDB(DbContextOptions<PrestamoDB> options)
+                : base(options)
+        {
+        }
+
+        public void PreparaDB()
+        {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
+        }
+
         //Declaración de las entidades del modelo
         public DbSet<Prestamo> Prestamos { get; set; }
         public DbSet<Banco> Bancos { get; set; }

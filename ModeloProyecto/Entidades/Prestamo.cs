@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloProyecto.Entidades
 {
+    public enum PrestamoEstado { Pendiente, Aprobado, Rechazado}
     public class Prestamo 
     {
         public int PrestamoId { get; set; }
@@ -14,7 +15,7 @@ namespace ModeloProyecto.Entidades
         public int Interes { get; set; }
         public double CuotaMensual { get; set; }
         public double TotalDeuda { get; set; }
-        public string Estado { get; set; }
+        public  PrestamoEstado Estado { get; set; }
         public int BancoId { get; set; }
         public Banco BancoPres { get; set; }
         public int MicroempresarioId { get; set; }

@@ -28,7 +28,7 @@ namespace CargaDatos
                 Interes = 5,
                 CuotaMensual = 162,
                 TotalDeuda = 1944,
-                Estado = "Activo"
+                Estado = PrestamoEstado.Aprobado
                 
 
             };
@@ -39,7 +39,7 @@ namespace CargaDatos
                 Interes = 4,
                 CuotaMensual = 103.12,
                 TotalDeuda = 2475,
-                Estado = "Activo"
+                Estado = PrestamoEstado.Pendiente
                 
 
             };
@@ -50,7 +50,7 @@ namespace CargaDatos
                 Interes = 3,
                 CuotaMensual = 187.50,
                 TotalDeuda = 6.750,
-                Estado = "Activo"
+                Estado = PrestamoEstado.Rechazado
                 
             };
 
@@ -233,11 +233,12 @@ namespace CargaDatos
             //-------------------------------------------------
             Dictionary<ListasTipo, object > dicListaDatos = new Dictionary<ListasTipo, object >()
             {
+                { ListasTipo.MicroEmprendimientos, listaMicroEmprendimientos },
                 { ListasTipo.Prestamos, listaPrestamos }, 
                 { ListasTipo.Bancos, listaBancos },
                 { ListasTipo.Garantes, listaGarantes },
-                { ListasTipo.MicroEmpresarios, listaMicroempresarios },
-                { ListasTipo.MicroEmprendimientos, listaMicroEmprendimientos }
+                { ListasTipo.MicroEmpresarios, listaMicroempresarios }
+                
             };
 
             return dicListaDatos;
